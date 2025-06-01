@@ -1,5 +1,6 @@
 
 import { Calculator, FileText, Users, Shield, TrendingUp, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const ServicesSection = () => {
@@ -8,7 +9,8 @@ const ServicesSection = () => {
       icon: Calculator,
       title: 'Ведення бухобліку',
       description: 'Повне ведення бухгалтерського обліку підприємств на різних системах оподаткування',
-      features: ['Первинні документи', 'Облік ТМЦ', 'Розрахунки з контрагентами', 'Звітність']
+      features: ['Первинні документи', 'Облік ТМЦ', 'Розрахунки з контрагентами', 'Звітність'],
+      link: '/accounting'
     },
     {
       icon: FileText,
@@ -73,7 +75,7 @@ const ServicesSection = () => {
                 <CardDescription className="text-gray-600 mb-4 text-center">
                   {service.description}
                 </CardDescription>
-                <ul className="space-y-2">
+                <ul className="space-y-2 mb-4">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-sm text-gray-700">
                       <div className="w-2 h-2 bg-primary-500 rounded-full mr-3 flex-shrink-0"></div>
@@ -81,6 +83,16 @@ const ServicesSection = () => {
                     </li>
                   ))}
                 </ul>
+                {service.link && (
+                  <div className="text-center">
+                    <Link 
+                      to={service.link}
+                      className="inline-block bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+                    >
+                      Детальніше
+                    </Link>
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))}
